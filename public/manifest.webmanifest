@@ -1,0 +1,12 @@
+{
+  "name": "PresuIA",
+  "short_name": "PresuIA",
+  "description": "Presupuestos profesionales en segundos.",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#f7f8fc",
+  "theme_color": "#635bff",
+  "icons": [
+    {"src":"/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}

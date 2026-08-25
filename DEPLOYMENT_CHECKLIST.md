@@ -1,0 +1,29 @@
+# Checklist de lanzamiento PresuIA
+
+- [ ] Rotar/revocar las claves Groq y Stripe que se expusieron en el chat.
+- [ ] Crear repositorio privado o público en GitHub.
+- [ ] Subir el proyecto sin `.env.local`.
+- [ ] Ejecutar `npm install` y `npm run build` localmente.
+- [ ] Ejecutar `supabase/schema.sql`.
+- [ ] Activar Email Auth.
+- [ ] Configurar Google OAuth.
+- [ ] Configurar URLs de Supabase.
+- [ ] Crear producto y precio one-time de 4,99 € en Stripe.
+- [ ] Crear webhook `checkout.session.completed`.
+- [ ] Copiar las variables de entorno a Vercel.
+- [ ] Añadir `SUPABASE_SERVICE_ROLE_KEY` solo en Vercel.
+- [ ] Configurar `NEXT_PUBLIC_APP_URL`.
+- [ ] Desplegar en Vercel.
+- [ ] Actualizar redirect URLs con el dominio real.
+- [ ] Probar registro con email.
+- [ ] Probar Google.
+- [ ] Probar 3 generaciones gratuitas.
+- [ ] Confirmar que la 4.ª generación bloquea Free.
+- [ ] Probar pago de 4,99 € en modo test antes de activar producción.
+- [ ] Confirmar que el webhook cambia `profiles.plan` a `pro`.
+- [ ] Probar generación PRO.
+- [ ] Probar PDF.
+- [ ] Probar instalación PWA.
+- [ ] Añadir política de privacidad, términos y cookies según corresponda.
+- [ ] Añadir rate limiting antes de campañas masivas.
+- [ ] Configurar SMTP de producción y email de bienvenida.
