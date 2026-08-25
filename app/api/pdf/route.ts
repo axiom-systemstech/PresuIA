@@ -11,7 +11,7 @@ export async function GET(req:Request){
   if(!q) return new NextResponse("Not found",{status:404});
   const {data:p}=await supabase.from("profiles").select("company_name,email,phone").eq("id",user.id).single();
   const pdf=await PDFDocument.create();
-  const page=pdf.addPage([595,842]);
+  let page=pdf.addPage([595,842]);
   const font=await pdf.embedFont(StandardFonts.Helvetica);
   const bold=await pdf.embedFont(StandardFonts.HelveticaBold);
   let y=790;
@@ -25,7 +25,11 @@ export async function GET(req:Request){
     const line=String(item.description||"").slice(0,70);
     const qty=Number(item.quantity||1), price=Number(item.unit_price||0), subtotal=qty*price; total+=subtotal;
     page.drawText(`${line} — ${qty} ${item.unit||"ud"} × ${price.toFixed(2)} € = ${subtotal.toFixed(2)} €`,{x:50,y,size:10,font,maxWidth:495}); y-=18;
-    if(y<100){page.addPage([595,842]);y=790}
+    if(y<100){
+      page = pdf.addPage([595,842]);
+      page.drawText(p?.company_name||"PresuIA",{x:50,y:790,size:20,font:bold,color:rgb(.25,.23,.8)});
+      y=750;
+    }
   }
   y-=10; page.drawText(`Total orientativo: ${total.toFixed(2)} €`,{x:50,y,size:14,font:bold});
   const bytes=await pdf.save();
