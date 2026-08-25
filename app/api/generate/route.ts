@@ -22,6 +22,7 @@ export async function POST(req:Request){
     const completion=await groq.chat.completions.create({
       model:"openai/gpt-oss-120b",
       temperature:0.2,
+      reasoning_effort:"medium",
       response_format:{type:"json_object"},
       messages:[
         {role:"system",content:SYSTEM_PROMPT},
