@@ -43,7 +43,7 @@ export default function Dashboard() {
     setLoading(true);
     const res=await fetch("/api/checkout",{method:"POST"});
     const data=await res.json(); setLoading(false);
-    if(data.url) window.location.href=data.url; else setMessage(data.error||"Error con Stripe");
+    if(res.ok && data.url) { window.location.assign(data.url); } else { setMessage(data.error||"Stripe no devolvió una URL de pago. Revisa STRIPE_SECRET_KEY, STRIPE_PRO_PRICE_ID y NEXT_PUBLIC_APP_URL en Vercel."); }
   }
 
   async function logout(){await supabase.auth.signOut();router.push("/");}
