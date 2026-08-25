@@ -33,5 +33,5 @@ export async function GET(req:Request){
   }
   y-=10; page.drawText(`Total orientativo: ${total.toFixed(2)} €`,{x:50,y,size:14,font:bold});
   const bytes=await pdf.save();
-  return new NextResponse(bytes,{headers:{"Content-Type":"application/pdf","Content-Disposition":`inline; filename="presupuesto-${id}.pdf"`}});
+  return new NextResponse(Buffer.from(bytes),{headers:{"Content-Type":"application/pdf","Content-Disposition":`inline; filename="presupuesto-${id}.pdf"`}});
 }
